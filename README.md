@@ -9,19 +9,76 @@ Installs telegraf on Ubuntu 16.04 (Xenial)
 ## Requirements
 
 This role requires Ansible 2.4 or higher.
+This role is a copy of dj-wasabi.telegraf
 
 ## Role Variables
-
-The role defines most of its variables in `defaults/main.yml`:
+Check the role doc
+https://github.com/dj-wasabi/ansible-telegraf/blob/master/README.md
 
 ## Example Playbook
-
+``` yaml
 Run with default vars:
 
     - hosts: all
       roles:
         - { role: ansible-telegraf }
+```
+# Example.2 Playbook
 
+```yaml
+---
+- name: run the main role
+  hosts: all
+  become_method: su
+  become_user: root
+  roles:
+    - role: dj-wasabi.telegraf
+      telegraf_global_tags:
+        - tag_name: web
+          tag_value: web_server
+        - tag_name: environment
+          tag_value: production
+      telegraf_agent_output:
+        - type: influxdb
+          config:
+            - urls = ["http://localhost:8086"]
+            - timeout = "5s"
+            - database = "mydatabases"
+            - username = "myusername"
+            - password = "verySecret"
+      telegraf_plugins_default:
+        - plugin: cpu
+          config:
+            - percpu = true
+            - totalcpu = true
+            - collect_cpu_time = false
+        - plugin: disk
+          config:
+            - ignore_fs = ["tmpfs", "devtmpfs"]
+        - plugin: io
+        - plugin: mem
+        - plugin: net
+        - plugin: system
+        - plugin: swap
+        - plugin: netstat
+        - plugin: processes
+        - plugin: kernel
+        - plugin: sysstat
+          config:
+            - interval = "60s"
+            - sadc_path = "/usr/lib/sysstat/sadc"
+      telegraf_plugins_extra:
+        mysql:
+          config:
+            - servers = ["root:v3ryS3cr3t@tcp(localhost:3306)/"]
+        memcached:
+          config:
+            - servers = ["localhost:11211"]
+        postgresql:
+          config:
+            - address = "postgres://telegraf:verysecret_Password@localhost/db"
+              # check postgress and telegraf documentation
+```
 ## Testing
 
 Tests are performed using [Molecule](http://molecule.readthedocs.org/en/latest/).
