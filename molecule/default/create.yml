@@ -13,7 +13,6 @@
         name: "{{ item.name }}"
         hostname: "{{ item.name }}"
         image: solita/ubuntu-systemd:latest
-        command: /sbin/init
         capabilities:
           - SYS_ADMIN
         volumes:

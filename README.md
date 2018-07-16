@@ -30,7 +30,6 @@ Run with default vars:
 - name: run the main role
   hosts: all
   become_method: su
-  become_user: root
   roles:
     - role: dj-wasabi.telegraf
       telegraf_global_tags:
@@ -77,7 +76,6 @@ Run with default vars:
         postgresql:
           config:
             - address = "postgres://telegraf:verysecret_Password@localhost/db"
-              # check postgress and telegraf documentation
 ```
 ## Testing
 
