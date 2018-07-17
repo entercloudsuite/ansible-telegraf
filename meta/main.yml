@@ -13,4 +13,4 @@ galaxy_info:
     - molecule
 
 dependencies:
-  - { role: dj-wasabi.telegraf, version: v0.9.0 }
+  - { role: dj-wasabi.telegraf, version: 0.9.0 }

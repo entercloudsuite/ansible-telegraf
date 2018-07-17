@@ -1,2 +1,3 @@
 ---
 - src: dj-wasabi.telegraf
+  version: 0.9.0
