@@ -3,7 +3,7 @@
   hosts: all
   become_method: su
   roles:
-    - role: dj-wasabi.telegraf
+    - role: ansible-telegraf
       telegraf_global_tags:
         - tag_name: web
           tag_value: web_server

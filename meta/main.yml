@@ -12,5 +12,5 @@ galaxy_info:
   galaxy_tags:
     - molecule
 
-
-dependencies: []
+dependencies:
+  - { role: dj-wasabi.telegraf, version: v0.9.0 }
