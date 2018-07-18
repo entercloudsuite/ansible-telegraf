@@ -1,12 +1,3 @@
 version: 1.0
 name: phpfpm
 description: install php-fpm
-bindable: False
-async: optional
-metadata:
-  displayName: phpfpm
-  longDescription: |
-    role install php-fpm and php-pakage, can enable exstension for MCrouter
-  documentationUrl: https://github.com/entercloudsuite/ansible-php/blob/master/README.md
-  imageUrl: https://avatars2.githubusercontent.com/u/18148903?v=4
-  providerDisplayName: "Entercloudsuite"
